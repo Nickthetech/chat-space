@@ -1,0 +1,26 @@
+.side-bar
+  .side-bar__user-name
+    .top-items
+      .top-items__name
+        でいす！西川
+      .top-items__icons
+        = link_to "#", class: "top-items__icons--btn" do
+          = icon('fas', 'edit',  class: "top-items__icons--btn--icon")
+        = link_to "#", class: "top-items__icons--btn" do
+          = icon('fas', 'cog',  class: "top-items__icons--btn--icon")
+  .side-bar__group-list
+    .group-list
+      .group-list__name
+        グループone
+      .group-list__message
+        まだメッセージがありません
+    .group-list
+      .group-list__name
+        グループtwo
+      .group-list__message
+        やはりメッセージはありません
+    .group-list
+      .group-list__name
+        グループthree
+      .group-list__message
+        もうメッセージはきません
