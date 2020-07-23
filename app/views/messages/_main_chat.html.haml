@@ -1,4 +1,41 @@
 .main-chat
   .chat-main__group-info
+    .chat-header__group
+      .chat-header__group--name
+        グループone
+      .chat-header__group--member
+        Member : でいす！西川　What's up なべ
+    = link_to "Edit", "#", class: "chat-header__edit-btn"
   .chat-main__message-list
+    .chat-message
+      .chat-message-top
+        .chat-message-top__name
+          でいす！西川
+        .chat-message-top__date
+          　2020年07月22日 14時58分
+      .chat-message-text
+        これはテスト。これはテスト。これはテスト。
+    .chat-message
+      .chat-message-top
+        .chat-message-top__name
+          でいす！西川
+        .chat-message-top__date
+          　2020年07月22日 14時58分
+      .chat-message-text
+        これはテスト。これはテスト。これはテスト。
+    .chat-message
+      .chat-message-top
+        .chat-message-top__name
+          でいす！西川
+        .chat-message-top__date
+          　2020年07月22日 14時58分
+      .chat-message-text
+        これはテスト。これはテスト。これはテスト。
   .chat-main__message-form
+    = form_with class: "chat-form" do |form|
+      .chat-form__box
+        = form.text_field :text, placeholder: "type a message", class: "chat-form__box-text"
+        %label{for: "image-icon",class: "chat-form__box-image"}
+          = icon('far', 'image')
+          = form.file_field :file, id: "image-icon", class: "image-icon"
+      = form.submit value: "Send", class: "chat-form__btn"
