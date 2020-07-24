@@ -9,18 +9,10 @@
         = link_to edit_user_path(current_user), class: "top-items__icons--btn" do
           = icon('fas', 'cog',  class: "top-items__icons--btn--icon")
   .side-bar__group-list
-    .group-list
-      .group-list__name
-        グループone
-      .group-list__message
-        まだメッセージがありません
-    .group-list
-      .group-list__name
-        グループtwo
-      .group-list__message
-        やはりメッセージはありません
-    .group-list
-      .group-list__name
-        グループthree
-      .group-list__message
-        もうメッセージはきません
+    - current_user.groups.each do |group|
+      .group-list
+        = link_to '#' do
+          .group-list__name
+            = group.name
+          .group-list__message
+            まだメッセージがありません
