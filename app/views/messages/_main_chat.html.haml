@@ -2,40 +2,19 @@
   .chat-main__group-info
     .chat-header__group
       .chat-header__group--name
-        グループone
+        = @group.name
       .chat-header__group--member
-        Member : でいす！西川　What's up なべ
-    = link_to "Edit", "#", class: "chat-header__edit-btn"
+        Member : 
+        - @group.users .each do |user|
+          = user.name
+    = link_to "Edit", edit_group_path(@group), class: "chat-header__edit-btn"
   .chat-main__message-list
-    .chat-message
-      .chat-message-top
-        .chat-message-top__name
-          でいす！西川
-        .chat-message-top__date
-          　2020年07月22日 14時58分
-      .chat-message-text
-        これはテスト。これはテスト。これはテスト。
-    .chat-message
-      .chat-message-top
-        .chat-message-top__name
-          でいす！西川
-        .chat-message-top__date
-          　2020年07月22日 14時58分
-      .chat-message-text
-        これはテスト。これはテスト。これはテスト。
-    .chat-message
-      .chat-message-top
-        .chat-message-top__name
-          でいす！西川
-        .chat-message-top__date
-          　2020年07月22日 14時58分
-      .chat-message-text
-        これはテスト。これはテスト。これはテスト。
-  .chat-main__message-form
-    = form_with class: "chat-form" do |form|
-      .chat-form__box
-        = form.text_field :text, placeholder: "type a message", class: "chat-form__box-text"
-        %label{for: "image-icon",class: "chat-form__box-image"}
-          = icon('far', 'image')
-          = form.file_field :file, id: "image-icon", class: "image-icon"
-      = form.submit value: "Send", class: "chat-form__btn"
+    = render @messages
+  .Footer
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+      .Form__contents
+        = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+        = f.label :image, class: 'Form__inputImage' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'Form__submit'
